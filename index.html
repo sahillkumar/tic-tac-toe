@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>tic tac toe</h1>
+      </div>
+      <div class="main">
+        <div class="playerForm">
+          <form name="playerForm">
+            <div class="formItem">
+              <label for="name">Enter player name</label><br />
+              <input type="text" id="name" />
+            </div>
+            <div class="formItem">
+              <label>Choose marker</label><br />
+              <input type="radio" id="valueX" name="marker" value="X" />
+              <label for="valueX">X</label>
+              <input type="radio" id="valueO" name="marker" value="O" />
+              <label for="valueO">O</label>
+            </div>
+            <button type="submit">Start Game</button>
+          </form>
+        </div>
+        <div class="gameContainer">
+          <div class="markerLogo">
+            X
+            <span class="playerXName"></span>
+          </div>
+          <div class="gameBoard">
+            <div class="status">Status</div>
+            <div class="board" id="board"></div>
+            <div class="controls">
+              <button class="exitButton">Exit Game</button>
+              <button class="resetButton">Reset Board</button>
+            </div>
+          </div>
+          <div class="markerLogo">
+            O
+            <span class="playerOName"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

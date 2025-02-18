@@ -1,0 +1,66 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --primary: #fff;
+  --secondary: #ccc;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  height: 100px;
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+.main {
+  flex: 1;
+}
+
+.playerForm {
+  border: 2px solid var(--secondary);
+  border-radius: 4px;
+  width: min(600px, 75%);
+  margin: 0 auto;
+  display: none;
+}
+
+.gameContainer {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+
+  .markerLogo {
+    color: var(--secondary);
+    font-size: 2rem;
+    border: 1px solid var(--secondary);
+    background: yellow;
+  }
+
+  .gameBoard {
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-template-rows: repeat(3, 100px);
+
+      div {
+        border: 1px solid var(--secondary);
+        padding: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+}
