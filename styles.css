@@ -1,12 +1,15 @@
+:root {
+  --primary: #fff;
+  --secondary: rgba(128, 128, 128, 0.5);
+  --primary-font: "Galindo", cursive;
+  --secondary-font: "Poppins", sans-serif;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-}
-
-:root {
-  --primary: #fff;
-  --secondary: #ccc;
+  font-family: var(--primary-font);
 }
 
 .container {
@@ -16,9 +19,15 @@ body {
 }
 
 .header {
-  height: 100px;
   background-color: var(--secondary);
   color: var(--primary);
+
+  h1 {
+    width: 75%;
+    margin: auto;
+    padding: 16px 0;
+    font-size: 2.5rem;
+  }
 }
 
 .main {
@@ -26,41 +35,203 @@ body {
 }
 
 .playerForm {
-  border: 2px solid var(--secondary);
-  border-radius: 4px;
+  border: 1.5px solid var(--secondary);
+  border-radius: 16px;
   width: min(600px, 75%);
-  margin: 0 auto;
-  display: none;
+  margin: auto;
+  margin-top: 100px;
+  padding: 32px;
+  .formItem {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      font-size: 1rem;
+      box-sizing: border-box;
+      outline: none;
+      border: 1px solid var(--secondary);
+      border-radius: 6px;
+      font-family: var(--secondary-font);
+      color: var(--secondary);
+
+      &:focus {
+        border-width: 1.5px;
+        border-color: var(--secondary);
+      }
+    }
+
+    label,
+    input[type="radio"] {
+      cursor: pointer;
+      color: var(--secondary);
+    }
+
+    label[for="valueX"],
+    label[for="valueO"] {
+      font-family: var(--secondary-font);
+      vertical-align: middle;
+    }
+
+    label[for="valueX"] {
+      margin-right: 16px;
+    }
+
+    input[type="radio"] {
+      accent-color: rgba(128, 128, 128, 0.75);
+    }
+
+    input {
+      margin-top: 8px;
+    }
+  }
+
+  button {
+    background-color: var(--secondary);
+    color: var(--primary);
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    font-size: 1.25rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 32px;
+    font-family: var(--primary-font);
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
 }
 
 .gameContainer {
   display: grid;
-  grid-template-columns: 20% 60% 20%;
+  grid-template-columns: 1fr 2fr 1fr;
+  width: min(1000px, 75%);
+  margin: auto;
+  margin-top: 50px;
+  gap: 40px;
+  min-height: 60vh;
 
-  .markerLogo {
-    color: var(--secondary);
+  .gameBoard,
+  .scoreBoard {
+    display: grid;
+    grid-template-rows: 1fr 4fr 50px;
+    gap: 40px;
+  }
+
+  .empty,
+  .status {
     font-size: 2rem;
-    border: 1px solid var(--secondary);
-    background: yellow;
+    color: var(--secondary);
+    text-align: center;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+  }
+
+  .scoreItem,
+  .controls {
+    display: flex;
+    align-items: center;
+    font-size: 1.25rem;
+    /* margin-top: 100px; */
+  }
+
+  .scoreBoard {
+    .empty {
+      visibility: hidden;
+    }
+
+    .markerLogo {
+      color: var(--secondary);
+      font-size: 12em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .scoreItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid var(--secondary);
+
+      & > * {
+        height: 100%;
+        box-sizing: border-box;
+      }
+
+      .playerName {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 12px;
+        color: var(--secondary);
+        text-transform: capitalize;
+      }
+
+      .playerScore {
+        width: 50px;
+        background-color: var(--secondary);
+        color: var(--primary);
+        text-align: center;
+        padding: 12px;
+      }
+    }
   }
 
   .gameBoard {
-    border: 1px solid green;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
     .board {
       display: grid;
       grid-template-columns: repeat(3, 100px);
       grid-template-rows: repeat(3, 100px);
+      place-content: center;
 
       div {
-        border: 1px solid var(--secondary);
+        border-right: 1px solid var(--secondary);
+        border-bottom: 1px solid var(--secondary);
         padding: 12px;
         cursor: pointer;
+        color: var(--secondary);
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+
+      div:nth-child(3n) {
+        border-right: none;
+      }
+
+      div:nth-child(n + 7) {
+        border-bottom: none;
+      }
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      button {
+        background-color: var(--secondary);
+        color: var(--primary);
+        border: none;
+        border-radius: 6px;
+        padding: 12px;
+        cursor: pointer;
+        font-family: var(--primary-font);
+        font-size: 1.25rem;
       }
     }
   }
+}
+
+.hidden {
+  display: none;
 }
